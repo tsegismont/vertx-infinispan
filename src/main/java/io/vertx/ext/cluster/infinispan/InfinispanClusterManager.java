@@ -51,6 +51,7 @@ import org.jgroups.Channel;
 import org.jgroups.blocks.atomic.CounterService;
 import org.jgroups.blocks.locking.LockService;
 import org.jgroups.fork.ForkChannel;
+import org.jgroups.protocols.CENTRAL_LOCK;
 import org.jgroups.protocols.COUNTER;
 import org.jgroups.protocols.FRAG2;
 import org.jgroups.stack.Protocol;
@@ -206,7 +207,7 @@ public class InfinispanClusterManager implements ClusterManager {
       JGroupsTransport transport = (JGroupsTransport) cacheManager.getTransport();
       Channel channel = transport.getChannel();
       CENTRAL_LOCK centralLock = new CENTRAL_LOCK();
-      centralLock.setUseThreadIdForLockOwner(true);
+      centralLock.setValue("use_thread_id_for_lock_owner", Boolean.FALSE);
       centralLock.setBypassBundling(true);
       COUNTER counter = new COUNTER();
       counter.setBypassBundling(true);
