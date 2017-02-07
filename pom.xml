@@ -60,6 +60,11 @@
       <artifactId>infinispan-core</artifactId>
       <version>${infinispan.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.jgroups</groupId>
+      <artifactId>jgroups</artifactId>
+      <version>3.6.12-SNAPSHOT</version>
+    </dependency>
 
     <dependency>
       <groupId>io.vertx</groupId>
