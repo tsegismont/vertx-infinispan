@@ -5,13 +5,16 @@ on:
       branch:
         required: true
         type: string
+      jdk:
+        required: true
+        type: string
 jobs:
   CI:
     strategy:
       matrix:
         include:
           - os: ubuntu-latest
-            jdk: 11
+            jdk: ${{ inputs.jdk }}
     uses: ./.github/workflows/ci.yml
     with:
       branch: ${{ inputs.branch }}
@@ -24,5 +27,5 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       branch: ${{ inputs.branch }}
-      jdk: 11
+      jdk: ${{ inputs.jdk }}
     secrets: inherit
