@@ -21,9 +21,7 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.sstore.infinispan.InfinispanSessionStore;
 import io.vertx.ext.web.tests.handler.SessionHandlerTestBase;
-import io.vertx.junit5.VertxTestContext;
 import org.infinispan.commons.util.Version;
-import org.junit.ClassRule;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -58,7 +56,7 @@ public class InfinispanSessionHandlerTest extends SessionHandlerTestBase {
 
   @BeforeEach
   @Override
-  public void setUp(Vertx vertx, VertxTestContext testContext) throws Exception {
+  public void setUp(Vertx vertx) throws Exception {
     JsonObject config = new JsonObject()
       .put("servers", new JsonArray().add(new JsonObject()
         .put("host", container.getHost())
@@ -67,6 +65,6 @@ public class InfinispanSessionHandlerTest extends SessionHandlerTestBase {
         .put("password", PASS)
       ));
     store = InfinispanSessionStore.create(vertx, config);
-    super.setUp(vertx, testContext);
+    super.setUp(vertx);
   }
 }
